@@ -1,0 +1,27 @@
+<button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample">
+    Add Task
+</button>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <div class="container">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <div class="mb-3 fw-bold">
+                    <label for="title" class="form-label">Title</label>
+                    <input class="form-control" #titleInput="ngModel" [(ngModel)]="title"
+                        [class.is-invalid]="titleInput.touched && titleInput.pristine" name="title" type="text"
+                        id="title" aria-describedby="title" required>
+                    <div class="invalid-feedback" *ngIf="titleInput.touched && titleInput.pristine">
+                        Title required
+                    </div>
+                </div>
+                <div class="mb-3 fw-bold">
+                    <label for="description" class="form-label">Task</label>
+                    <input type="description" placeholder="description" class="form-control" name="task" id="task"
+                        [(ngModel)]="description">
+                </div>
+                <button class="btn btn-primary" [disabled]="!titleInput.valid">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
